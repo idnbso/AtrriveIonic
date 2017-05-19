@@ -1,0 +1,45 @@
+<ion-header dir="rtl">
+  <ion-navbar no-border-bottom>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>מפה</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <form (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-input
+            id="originRoadName"
+            type="text"
+            name="originRoadName"
+            placeholder="מוצא"
+            [(ngModel)]="originRoadName">
+          </ion-input>
+        </ion-item>
+
+        <ion-item *ngFor="let destination of results" (click)="selectDestination(destination)">
+          {{ destination.formatted_address }}
+        </ion-item>
+      </ion-list>
+    </form>
+    <ion-list>
+      <ion-item>
+        <ion-input
+          id="destinationRoadName"
+          type="text"
+          name="destinationRoadName"
+          placeholder="יעד"
+          [(ngModel)]="destinationRoadName">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="route">
+  <div class="map-wrapper">
+    <map></map>
+  </div>
+</ion-content>
